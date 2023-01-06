@@ -11,7 +11,10 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/public/index.html');
 });
 
-io.on('connection', (socket) => {
+// tech namespace
+const tech = io.of('/tech');
+
+tech.on('connection', (socket) => {
     console.log('user connected');
     socket.on('message', (msg) => {
         console.log(`message: ${msg}`);
